@@ -1,0 +1,87 @@
+{
+  "user": {
+    "name": "Clare",
+    "greetingMessage": "Have a nice day Clare"
+  },
+  "accounts": [
+    {
+      "type": "saving-account",
+      "amount": 62000.0,
+      "currency": "THB",
+      "accountNumber": "568-2-81740-9",
+      "issuer": "TestLab",
+      "color": "#24c875",
+      "isMainAccount": true
+    },
+    {
+      "type": "credit-loan",
+      "amount": 300.1,
+      "currency": "THB",
+      "accountNumber": "568-2-81740-9",
+      "issuer": "TestLab",
+      "color": "#9366ed",
+      "isMainAccount": false
+    },
+    {
+      "type": "goal-saving-account",
+      "amount": 30000.0,
+      "currency": "THB",
+      "accountNumber": "568-2-81740-9",
+      "issuer": "TestLab",
+      "progress": 24,
+      "color": "#00a1e2",
+      "isMainAccount": false
+    },
+    {
+      "type": "credit-loan",
+      "amount": 30000.0,
+      "currency": "THB",
+      "accountNumber": "568-2-81740-9",
+      "issuer": "TestLab",
+      "flags": ["Disbursement", "Overdue"],
+      "color": "#15bbc7",
+      "isMainAccount": false
+    }
+  ],
+  "transaction-recent": [
+    {
+      "name": "Emily",
+      "image": "https://dummyimage.com/54x54/999/fff",
+      "isBank": false
+    },
+    {
+      "name": "Jone Kiersten",
+      "image": "https://dummyimage.com/54x54/999/fff",
+      "isBank": false
+    }
+  ],
+  "debit-cards": [
+    {
+      "name": "My Salary",
+      "status": "in-progress",
+      "issuer": "TestLab",
+      "color": "#00a1e2"
+    },
+    {
+      "name": "For My Dream",
+      "status": "in-progress",
+      "issuer": "TestLab",
+      "color": "#ff8300"
+    },
+    {
+      "name": "My Debit card",
+      "status": "Active",
+      "issuer": "TestLab",
+      "color": "#ffffff",
+      "borderColor": "#f2f3f7",
+      "number": "9440 7841 2222 3115"
+    }
+  ],
+  "banners": [
+    {
+      "title": "Want some money?",
+      "description": "You can start apply 'Clare'",
+      "image": "https://dummyimage.com/54x54/999/fff"
+    }
+  ]
+}
