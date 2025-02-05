@@ -9,23 +9,21 @@ const SplashScreen: FC<SplashScreenProps> = ({ onFinish }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchInitDate = async () => {
-      const isAuth = localStorage.getItem('isAuth') === 'false';
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+    const fetchInitData = async () => {
+      const isAuth = localStorage.getItem('isAuth') === 'true';
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       onFinish();
 
       if (!isAuth) navigate('/pin');
     };
 
-    fetchInitDate();
+    fetchInitData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className='wrap'>
-      <div className='splash'>
-        <div className='loader' />
-      </div>
+    <div className='splash'>
+      <div className='loader' />
     </div>
   );
 };
