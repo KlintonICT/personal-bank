@@ -1,23 +1,47 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, useNavigate, useLocation } from 'react-router';
 
-import SplashScreen from '@/pages/SplashScreen';
+import Pin from '@/pages/Pin';
+
+import { useAppDispatch, useAppSelector } from '@/store';
+import { useEffect } from 'react';
+import { handleCheckAuth } from '@/store/auth/action';
+
+const SplashScreen = () => (
+  <div className='splash'>
+    <div className='loader' />
+  </div>
+);
 
 const App = () => {
-  const [showSplash, setShowSplash] = useState(true);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
 
-  const onCloseSplashScreen = () => {
-    setShowSplash(false);
-  };
+  const { showSplash, isAuth } = useAppSelector((state) => ({
+    showSplash: state.splash.showSplash,
+    isAuth: state.auth.isAuth,
+  }));
+
+  useEffect(() => {
+    dispatch(handleCheckAuth());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!showSplash) {
+      if (isAuth && pathname === '/pin') navigate('/');
+      if (!isAuth && pathname !== '/pin') navigate('/pin');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuth, showSplash]);
 
   return (
     <div className='wrap'>
       {showSplash ? (
-        <SplashScreen onFinish={onCloseSplashScreen} />
+        <SplashScreen />
       ) : (
         <Routes>
           <Route path='/' element={<div>Bank Main</div>} />
-          <Route path='/pin' element={<div>Pin</div>} />
+          <Route path='/pin' element={<Pin />} />
           <Route path='*' element={<div>Not Found</div>} />
         </Routes>
       )}
