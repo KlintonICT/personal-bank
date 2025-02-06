@@ -17,10 +17,8 @@ const App = () => {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
 
-  const { showSplash, isAuth } = useAppSelector((state) => ({
-    showSplash: state.splash.showSplash,
-    isAuth: state.auth.isAuth,
-  }));
+  const { isAuth } = useAppSelector((state) => state.auth);
+  const { showSplash } = useAppSelector((state) => state.splash);
 
   useEffect(() => {
     dispatch(handleCheckAuth());
