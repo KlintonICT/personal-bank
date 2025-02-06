@@ -26,6 +26,7 @@ export default tseslint.config(
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       ...jest.configs.recommended.rules,
       ...testingLibrary.configs.react.rules,
-    },
+      'jest/expect-expect': 'off'
+    }
   },
 );
