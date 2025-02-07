@@ -7,7 +7,6 @@ import { authReducer } from './auth/reducer';
 import { authSaga } from './auth/saga';
 import { splashReducer } from './splash/reducer';
 
-
 function* rootSaga() {
   yield all([authSaga()]);
 }

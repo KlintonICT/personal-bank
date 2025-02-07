@@ -1,7 +1,7 @@
 import { testSaga } from 'redux-saga-test-plan';
 
-import { AUTH_ACTION, handleCheckAuthDone } from './action';
-import { checkAuthSaga, authSaga } from './saga';
+import { AUTH_ACTION, handleCheckAuthDone, handleLoginSuccess } from './action';
+import { checkAuthSaga, authSaga, login } from './saga';
 
 import { handleHideSplash } from '@/store/splash/action';
 
@@ -22,7 +22,16 @@ describe('Auth Saga', () => {
     localStorageMock.mockRestore();
   });
 
-  it('should trigger checkAuthSaga on CHECK_AUTH action', () => {
-    testSaga(authSaga).next().takeLatest(AUTH_ACTION.CHECK_AUTH, checkAuthSaga).finish();
+  it('should handle login', async () => {
+    testSaga(login).next().put(handleLoginSuccess()).finish();
+  });
+
+  it('should listen for all expected actions', async () => {
+    testSaga(authSaga)
+      .next()
+      .takeLatest(AUTH_ACTION.CHECK_AUTH, checkAuthSaga)
+      .next()
+      .takeLatest(AUTH_ACTION.LOGIN_REQUEST, login)
+      .finish();
   });
 });

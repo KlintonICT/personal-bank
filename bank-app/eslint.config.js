@@ -43,6 +43,8 @@ export default tseslint.config(
           warnOnUnassignedImports: true,
         },
       ],
+      '@typescript-eslint/no-explicit-any': 'off',
+      'testing-library/no-node-access': 'off',
     },
   }
 );

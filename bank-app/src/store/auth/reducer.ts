@@ -14,6 +14,9 @@ export const authReducer = (state = initialState, action: AUTH_ACTION_TYPE) => {
       const payload = action.payload as CHECK_AUTH_DONE_PAYLOAD;
       return { ...state, ...payload };
     }
+    case AUTH_ACTION.LOGIN_SUCCESS: {
+      return { ...state, isAuth: true };
+    }
     default:
       return state;
   }

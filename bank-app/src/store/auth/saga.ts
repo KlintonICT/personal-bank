@@ -1,6 +1,6 @@
 import { delay, put, takeLatest } from 'redux-saga/effects';
 
-import { AUTH_ACTION, handleCheckAuthDone } from './action';
+import { AUTH_ACTION, handleCheckAuthDone, handleLoginSuccess } from './action';
 
 import { handleHideSplash } from '@/store/splash/action';
 
@@ -11,6 +11,12 @@ export function* checkAuthSaga() {
   yield put(handleHideSplash());
 }
 
+export function* login() {
+  localStorage.setItem('isAuth', 'true');
+  yield put(handleLoginSuccess());
+}
+
 export function* authSaga() {
   yield takeLatest(AUTH_ACTION.CHECK_AUTH, checkAuthSaga);
+  yield takeLatest(AUTH_ACTION.LOGIN_REQUEST, login);
 }
