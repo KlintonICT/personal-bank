@@ -1,7 +1,8 @@
 import { testSaga } from 'redux-saga-test-plan';
 
-import { checkAuthSaga, authSaga } from './saga';
 import { AUTH_ACTION, handleCheckAuthDone } from './action';
+import { checkAuthSaga, authSaga } from './saga';
+
 import { handleHideSplash } from '@/store/splash/action';
 
 describe('Auth Saga', () => {

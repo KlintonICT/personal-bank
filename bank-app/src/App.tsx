@@ -1,9 +1,8 @@
+import { useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router';
 
 import Pin from '@/pages/Pin';
-
 import { useAppDispatch, useAppSelector } from '@/store';
-import { useEffect } from 'react';
 import { handleCheckAuth } from '@/store/auth/action';
 
 const SplashScreen = () => (

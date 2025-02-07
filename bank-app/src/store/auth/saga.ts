@@ -1,6 +1,8 @@
 import { delay, put, takeLatest } from 'redux-saga/effects';
-import { handleHideSplash } from '@/store/splash/action';
+
 import { AUTH_ACTION, handleCheckAuthDone } from './action';
+
+import { handleHideSplash } from '@/store/splash/action';
 
 export function* checkAuthSaga() {
   const isAuth = localStorage.getItem('isAuth') === 'true';

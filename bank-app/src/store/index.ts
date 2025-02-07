@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
+import { authReducer } from './auth/reducer';
+import { authSaga } from './auth/saga';
 import { splashReducer } from './splash/reducer';
 
-import { authSaga } from './auth/saga';
-import { authReducer } from './auth/reducer';
 
 function* rootSaga() {
   yield all([authSaga()]);
