@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router';
 
+import BankMain from '@/pages/BankMain';
 import Pin from '@/pages/Pin';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { handleCheckAuth } from '@/store/auth/action';
@@ -37,7 +38,7 @@ const App = () => {
         <SplashScreen />
       ) : (
         <Routes>
-          <Route path='/' element={<div>Bank Main</div>} />
+          <Route path='/' element={<BankMain />} />
           <Route path='/pin' element={<Pin />} />
           <Route path='*' element={<div>Not Found</div>} />
         </Routes>

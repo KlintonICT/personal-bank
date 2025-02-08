@@ -276,14 +276,14 @@ button {
 }
 
 .header__menu {
-  background-image: url(../img/menu.png);
+  background-image: url(./assets/menu.png);
   background-size: contain;
   width: 24px;
   height: 24px;
 }
 
 .header__cxl {
-  background-image: url(../img/x.png);
+  background-image: url(./assets/x.png);
   background-size: contain;
   width: 24px;
   height: 24px;
