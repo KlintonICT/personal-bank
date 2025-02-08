@@ -9,6 +9,7 @@ const projectRootDir = resolve(__dirname);
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), alias({ entries: [{ find: '@', replacement: resolve(projectRootDir, 'src') }] })],
+  envDir: 'environments',
   server: {
     port: 3000,
   },

@@ -1,4 +1,8 @@
+import { useAppSelector } from '@/store';
+
 const BankMain = () => {
+  const { userInfo } = useAppSelector((state) => state.user);
+
   return (
     <>
       <header className='header'>
@@ -9,6 +13,14 @@ const BankMain = () => {
           <span className='blind'>Cancel</span>
         </button>
       </header>
+
+      <main className='container container--main'>
+        <div className='content_wrap'>
+          <div className='main-top'>
+            <h1 className='main-top__tit main-loading main-loading--order1'>{userInfo?.greetingMessage}</h1>
+          </div>
+        </div>
+      </main>
     </>
   );
 };
