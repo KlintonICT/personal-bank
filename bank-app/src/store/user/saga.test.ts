@@ -25,7 +25,7 @@ jest.mock('@/apis', () => ({
   fetchUserAccount: jest.fn(),
 }));
 
-describe('fetchUserInfoSaga', () => {
+describe('User Saga', () => {
   it('should call fetchUserInfo API and dispatch success action', () => {
     const resData = { data: { name: 'Clare', greetingMessage: 'Have a nice day Clare' } };
 
