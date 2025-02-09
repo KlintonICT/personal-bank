@@ -37,6 +37,12 @@ const BankMain = () => {
           </div>
 
           {banners.length > 0 && <Banner data={banners[0]} />}
+
+          <div className='main-tb'>
+            <a href='#' className='link-to'>
+              Total Balance
+            </a>
+          </div>
         </div>
       </main>
     </>

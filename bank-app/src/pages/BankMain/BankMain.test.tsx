@@ -40,5 +40,6 @@ describe('BankMain Page', () => {
     expect(screen.getByText('Menu')).toBeInTheDocument();
     expect(screen.getByText('Cancel')).toBeInTheDocument();
     expect(screen.getByText('Have a nice day Clare')).toBeInTheDocument();
+    expect(screen.getByText('Total Balance')).toBeInTheDocument();
   });
 });
