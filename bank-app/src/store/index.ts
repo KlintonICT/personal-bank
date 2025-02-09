@@ -5,12 +5,14 @@ import { all } from 'redux-saga/effects';
 
 import { authReducer } from './auth/reducer';
 import { authSaga } from './auth/saga';
+import { bannerReducer } from './banner/reducer';
+import { bannerSaga } from './banner/saga';
 import { splashReducer } from './splash/reducer';
 import { userReducer } from './user/reducer';
 import { userSaga } from './user/saga';
 
 function* rootSaga() {
-  yield all([authSaga(), userSaga()]);
+  yield all([authSaga(), userSaga(), bannerSaga()]);
 }
 
 const sagaMiddleware = createSagaMiddleware();
@@ -20,7 +22,8 @@ const store = configureStore({
   reducer: {
     splash: splashReducer,
     auth: authReducer,
-    user: userReducer
+    user: userReducer,
+    banner: bannerReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
 });
