@@ -26,6 +26,22 @@ describe('Auth Saga', () => {
     localStorageMock.mockRestore();
   });
 
+  it('should not handle fetch init data when user not authenticated in checkAuthSaga', async () => {
+    const localStorageMock = jest.spyOn(Storage.prototype, 'getItem').mockReturnValue('false');
+
+    testSaga(checkAuthSaga)
+      .next()
+      .delay(1000)
+      .next()
+      .put(handleCheckAuthDone({ isAuth: false }))
+      .next()
+      .put(handleHideSplash())
+      .next()
+      .isDone();
+
+    localStorageMock.mockRestore();
+  });
+
   it('should handle login', async () => {
     testSaga(login)
       .next()

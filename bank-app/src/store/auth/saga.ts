@@ -8,7 +8,9 @@ import { handleFetchRecentTransaction, handleFetchUserCard, handleFetchUserInfo 
 export function* checkAuthSaga() {
   const isAuth = localStorage.getItem('isAuth') === 'true';
   yield delay(1000);
-  yield all([put(handleFetchUserInfo()), put(handleFetchRecentTransaction()), put(handleFetchUserCard())]);
+  if (isAuth) {
+    yield all([put(handleFetchUserInfo()), put(handleFetchRecentTransaction()), put(handleFetchUserCard())]);
+  }
   yield put(handleCheckAuthDone({ isAuth }));
   yield put(handleHideSplash());
 }
