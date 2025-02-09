@@ -3,7 +3,7 @@ import { userReducer } from './reducer';
 
 import { UserAccount, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
 
-describe('Splash Reducer', () => {
+describe('User Reducer', () => {
   const initState = {
     userInfo: null,
     recentTransaction: {
