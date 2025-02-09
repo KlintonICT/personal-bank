@@ -451,12 +451,12 @@ button {
   height: 54px;
   margin: 0 auto;
   border-radius: 50%;
-  background: #d0dae4 url(../img/common/bg_profile.png);
+  background: #d0dae4 url(./assets/common/bg_profile.png);
   background-size: 100%;
 }
 
 .rctly__thumb.is-bank {
-  background-image: url(../img/common/bg_logo.png);
+  background-image: url(./assets/common/bg_logo.png);
 }
 
 .rctly__thumb img {
@@ -592,7 +592,7 @@ button {
   margin: 4px auto 0;
   width: 92px;
   height: 92px;
-  background: #d0dae4 url(../img/common/bg_profile.png);
+  background: #d0dae4 url(./assets/common/bg_profile.png);
   background-size: 100%;
   border-radius: 50%;
 }
@@ -901,21 +901,21 @@ button {
 
 .main-acc__link--qr:before {
   background-size: contain;
-  background-image: url(../img/qr-scan.png);
+  background-image: url(./assets/qr-scan.png);
   width: 24px;
   height: 24px;
 }
 
 .main-acc__link--addmoney:before {
   background-size: contain;
-  background-image: url(../img/wallet.png);
+  background-image: url(./assets/wallet.png);
   width: 24px;
   height: 24px;
 }
 
 .main-acc__link--withdrawal:before {
   background-size: contain;
-  background-image: url(../img/transfer.png);
+  background-image: url(./assets/transfer.png);
   width: 24.5px;
   height: 24px;
 }
@@ -926,7 +926,7 @@ button {
   right: 11px;
   width: 24px;
   height: 24px;
-  background-image: url(../img/dots.png);
+  background-image: url(./assets/dots.png);
   background-size: contain;
 }
 

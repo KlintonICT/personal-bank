@@ -1,6 +1,12 @@
-import { handleFetchUserInfo, handleFetchUserInfoSuccess, USER_ACTION } from './action';
+import {
+  handleFetchRecentTransaction,
+  handleFetchRecentTransactionSuccess,
+  handleFetchUserInfo,
+  handleFetchUserInfoSuccess,
+  USER_ACTION,
+} from './action';
 
-import { UserInfo } from '@/types';
+import { UserInfo, UserProfile } from '@/types';
 
 describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO', () => {
@@ -12,5 +18,22 @@ describe('User Actions', () => {
     const payload: UserInfo = { name: 'name', greetingMessage: 'greeting message' };
     const expectedAction = { type: USER_ACTION.FETCH_USER_INFO_SUCCESS, payload };
     expect(handleFetchUserInfoSuccess(payload)).toEqual(expectedAction);
+  });
+
+  it('should create an action to handle USER_ACTION.FETCH_RECENT_TRANSACTION', () => {
+    const expectedAction = { type: USER_ACTION.FETCH_RECENT_TRANSACTION };
+    expect(handleFetchRecentTransaction()).toEqual(expectedAction);
+  });
+
+  it('should create an action to handle USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS', () => {
+    const payload: UserProfile[] = [
+      {
+        name: 'Emily',
+        image: 'https://dummyimage.com/54x54/999/fff',
+        isBank: false,
+      },
+    ];
+    const expectedAction = { type: USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS, payload };
+    expect(handleFetchRecentTransactionSuccess(payload)).toEqual(expectedAction);
   });
 });

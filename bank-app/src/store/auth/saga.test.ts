@@ -5,7 +5,7 @@ import { AUTH_ACTION, handleCheckAuthDone, handleLoginSuccess } from './action';
 import { checkAuthSaga, authSaga, login } from './saga';
 
 import { handleHideSplash } from '@/store/splash/action';
-import { handleFetchUserInfo } from '@/store/user/action';
+import { handleFetchRecentTransaction, handleFetchUserInfo } from '@/store/user/action';
 
 describe('Auth Saga', () => {
   it('should handle checkAuthSaga', async () => {
@@ -15,7 +15,7 @@ describe('Auth Saga', () => {
       .next()
       .delay(1000)
       .next()
-      .all([put(handleFetchUserInfo())])
+      .all([put(handleFetchUserInfo()), put(handleFetchRecentTransaction())])
       .next()
       .put(handleCheckAuthDone({ isAuth: true }))
       .next()
@@ -29,7 +29,7 @@ describe('Auth Saga', () => {
   it('should handle login', async () => {
     testSaga(login)
       .next()
-      .all([put(handleFetchUserInfo())])
+      .all([put(handleFetchUserInfo()), put(handleFetchRecentTransaction())])
       .next()
       .put(handleLoginSuccess())
       .finish();

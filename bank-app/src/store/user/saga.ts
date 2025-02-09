@@ -1,9 +1,9 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 
-import { handleFetchUserInfoSuccess, USER_ACTION } from './action';
+import { handleFetchRecentTransactionSuccess, handleFetchUserInfoSuccess, USER_ACTION } from './action';
 
-import { fetchUserInfo, APIResponse } from '@/apis';
-import { UserInfo } from '@/types';
+import { fetchUserInfo, APIResponse, fetchRecentTransaction } from '@/apis';
+import { UserInfo, UserProfile } from '@/types';
 
 export function* fetchUserInfoSaga() {
   try {
@@ -14,6 +14,16 @@ export function* fetchUserInfoSaga() {
   }
 }
 
+export function* fetchRecentTransactionSaga() {
+  try {
+    const response: APIResponse<UserProfile[]> = yield call(fetchRecentTransaction);
+    yield put(handleFetchRecentTransactionSuccess(response.data));
+  } catch (error) {
+    console.error('fetch recent transaction error', error);
+  }
+}
+
 export function* userSaga() {
   yield takeLatest(USER_ACTION.FETCH_USER_INFO, fetchUserInfoSaga);
+  yield takeLatest(USER_ACTION.FETCH_RECENT_TRANSACTION, fetchRecentTransactionSaga);
 }

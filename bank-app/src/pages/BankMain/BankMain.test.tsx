@@ -26,6 +26,9 @@ describe('BankMain Component', () => {
         userInfo: {
           greetingMessage: 'Have a nice day Clare',
         },
+        recentTransaction: {
+          userProfiles: [],
+        },
       },
     });
 

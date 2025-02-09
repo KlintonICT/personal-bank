@@ -1,7 +1,11 @@
+import { UserProfiles } from '@/components/UserProfiles';
 import { useAppSelector } from '@/store';
 
 const BankMain = () => {
-  const { userInfo } = useAppSelector((state) => state.user);
+  const {
+    userInfo,
+    recentTransaction: { userProfiles },
+  } = useAppSelector((state) => state.user);
 
   return (
     <>
@@ -18,6 +22,10 @@ const BankMain = () => {
         <div className='content_wrap'>
           <div className='main-top'>
             <h1 className='main-top__tit main-loading main-loading--order1'>{userInfo?.greetingMessage}</h1>
+          </div>
+
+          <div className='rctly__wrap main-loading main-loading--order5'>
+            <UserProfiles profiles={userProfiles} />
           </div>
         </div>
       </main>
