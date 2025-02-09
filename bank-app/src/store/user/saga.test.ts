@@ -2,19 +2,27 @@ import { testSaga } from 'redux-saga-test-plan';
 
 import {
   handleFetchRecentTransactionSuccess,
+  handleFetchUserAccountSuccess,
   handleFetchUserCardSuccess,
   handleFetchUserInfoSuccess,
   USER_ACTION,
 } from './action';
-import { fetchRecentTransactionSaga, fetchUserCardSaga, fetchUserInfoSaga, userSaga } from './saga';
+import {
+  fetchRecentTransactionSaga,
+  fetchUserAccountSaga,
+  fetchUserCardSaga,
+  fetchUserInfoSaga,
+  userSaga,
+} from './saga';
 
-import { fetchRecentTransaction, fetchUserCard, fetchUserInfo } from '@/apis';
+import { fetchRecentTransaction, fetchUserAccount, fetchUserCard, fetchUserInfo } from '@/apis';
 import { UserCardStatus } from '@/types';
 
 jest.mock('@/apis', () => ({
   fetchUserInfo: jest.fn(),
   fetchRecentTransaction: jest.fn(),
   fetchUserCard: jest.fn(),
+  fetchUserAccount: jest.fn(),
 }));
 
 describe('fetchUserInfoSaga', () => {
@@ -98,6 +106,39 @@ describe('fetchUserInfoSaga', () => {
     consoleErrorSpy.mockRestore();
   });
 
+  it('should call fetchUserAccount API and dispatch success action', () => {
+    const resData = {
+      data: [
+        {
+          type: 'saving-account',
+          amount: 62000.0,
+          currency: 'THB',
+          accountNumber: '568-2-81740-9',
+          issuer: 'TestLab',
+          color: '#24c875',
+          isMainAccount: true,
+        },
+      ],
+    };
+
+    testSaga(fetchUserAccountSaga)
+      .next()
+      .call(fetchUserAccount)
+      .next(resData)
+      .put(handleFetchUserAccountSuccess(resData.data))
+      .next()
+      .isDone();
+  });
+
+  it('should call fetchUserAccount API and throw error', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+
+    testSaga(fetchUserAccountSaga).next().call(fetchUserAccount).throw(new Error('fail')).next();
+    expect(consoleErrorSpy).toHaveBeenCalledWith('fetch user account error', expect.any(Error));
+
+    consoleErrorSpy.mockRestore();
+  });
+
   it('should listen for all expected actions', async () => {
     testSaga(userSaga)
       .next()
@@ -106,6 +147,8 @@ describe('fetchUserInfoSaga', () => {
       .takeLatest(USER_ACTION.FETCH_RECENT_TRANSACTION, fetchRecentTransactionSaga)
       .next()
       .takeLatest(USER_ACTION.FETCH_USER_CARD, fetchUserCardSaga)
+      .next()
+      .takeLatest(USER_ACTION.FETCH_USER_ACCOUNT, fetchUserAccountSaga)
       .finish();
   });
 });

@@ -25,3 +25,15 @@ export type UserCard = {
   borderColor?: string;
   number?: string;
 };
+
+export type UserAccount = {
+  type: string;
+  amount: number;
+  currency: string;
+  accountNumber: string;
+  issuer: string;
+  progress?: string;
+  color: string;
+  flags?: string[];
+  isMainAccount: boolean;
+};

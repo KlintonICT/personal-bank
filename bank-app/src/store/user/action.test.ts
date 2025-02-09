@@ -1,6 +1,8 @@
 import {
   handleFetchRecentTransaction,
   handleFetchRecentTransactionSuccess,
+  handleFetchUserAccount,
+  handleFetchUserAccountSuccess,
   handleFetchUserCard,
   handleFetchUserCardSuccess,
   handleFetchUserInfo,
@@ -8,7 +10,7 @@ import {
   USER_ACTION,
 } from './action';
 
-import { UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
+import { UserAccount, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
 
 describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO', () => {
@@ -55,5 +57,26 @@ describe('User Actions', () => {
     ];
     const expectedAction = { type: USER_ACTION.FETCH_USER_CARD_SUCCESS, payload };
     expect(handleFetchUserCardSuccess(payload)).toEqual(expectedAction);
+  });
+
+  it('should create an action to handle USER_ACTION.FETCH_USER_ACCOUNT', () => {
+    const expectedAction = { type: USER_ACTION.FETCH_USER_ACCOUNT };
+    expect(handleFetchUserAccount()).toEqual(expectedAction);
+  });
+
+  it('should create an action to handle USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS', () => {
+    const payload: UserAccount[] = [
+      {
+        type: 'saving-account',
+        amount: 62000.0,
+        currency: 'THB',
+        accountNumber: '568-2-81740-9',
+        issuer: 'TestLab',
+        color: '#24c875',
+        isMainAccount: true,
+      },
+    ];
+    const expectedAction = { type: USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS, payload };
+    expect(handleFetchUserAccountSuccess(payload)).toEqual(expectedAction);
   });
 });

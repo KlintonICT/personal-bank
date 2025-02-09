@@ -1,7 +1,7 @@
 import { USER_ACTION } from './action';
 import { userReducer } from './reducer';
 
-import { UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
+import { UserAccount, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
 
 describe('Splash Reducer', () => {
   const initState = {
@@ -10,6 +10,9 @@ describe('Splash Reducer', () => {
       userProfiles: [],
     },
     userCards: [],
+    userAccount: {
+      accounts: [],
+    },
   };
 
   it('should return the initial state', () => {
@@ -40,6 +43,7 @@ describe('Splash Reducer', () => {
     };
     expect(userReducer(initState, action)).toEqual(expectedState);
   });
+
   it('should handle USER_ACTION.FETCH_USER_CARD_SUCCESS', () => {
     const payload: UserCard[] = [
       {
@@ -50,7 +54,30 @@ describe('Splash Reducer', () => {
       },
     ];
     const action = { type: USER_ACTION.FETCH_USER_CARD_SUCCESS, payload };
-    const expectedState = {...initState, userCards: payload};
+    const expectedState = { ...initState, userCards: payload };
+    expect(userReducer(initState, action)).toEqual(expectedState);
+  });
+
+  it('should handle USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS', () => {
+    const payload: UserAccount[] = [
+      {
+        type: 'saving-account',
+        amount: 62000.0,
+        currency: 'THB',
+        accountNumber: '568-2-81740-9',
+        issuer: 'TestLab',
+        color: '#24c875',
+        isMainAccount: true,
+      },
+    ];
+    const action = { type: USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS, payload };
+    const expectedState = {
+      ...initState,
+      userAccount: {
+        mainAccount: payload[0],
+        accounts: payload,
+      },
+    };
     expect(userReducer(initState, action)).toEqual(expectedState);
   });
 });
