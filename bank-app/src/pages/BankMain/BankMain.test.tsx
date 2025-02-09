@@ -6,7 +6,7 @@ import BankMain from '.';
 
 const mockStore = configureStore([]);
 
-describe('BankMain Component', () => {
+describe('BankMain Page', () => {
   let store: any;
 
   beforeEach(() => {
@@ -29,6 +29,7 @@ describe('BankMain Component', () => {
         recentTransaction: {
           userProfiles: [],
         },
+        userCards: [],
       },
     });
 

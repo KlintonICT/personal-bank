@@ -1,12 +1,13 @@
 import { USER_ACTION, USER_ACTION_TYPE } from './action';
 
-import { UserInfo, UserProfile } from '@/types';
+import { UserCard, UserInfo, UserProfile } from '@/types';
 
 type InitUserState = {
   userInfo: UserInfo | null;
   recentTransaction: {
     userProfiles: UserProfile[];
   };
+  userCards: UserCard[];
 };
 
 const initialState: InitUserState = {
@@ -14,6 +15,7 @@ const initialState: InitUserState = {
   recentTransaction: {
     userProfiles: [],
   },
+  userCards: [],
 };
 
 export const userReducer = (state = initialState, action: USER_ACTION_TYPE) => {
@@ -32,6 +34,13 @@ export const userReducer = (state = initialState, action: USER_ACTION_TYPE) => {
         recentTransaction: {
           userProfiles: payload,
         },
+      };
+    }
+    case USER_ACTION.FETCH_USER_CARD_SUCCESS: {
+      const payload: UserCard[] = action.payload;
+      return {
+        ...state,
+        userCards: payload,
       };
     }
 

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { UserProfile } from '@/types';
 
-export interface UserProfilesProps {
+interface UserProfilesProps {
   profiles: UserProfile[];
 }
 

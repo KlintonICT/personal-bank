@@ -1,7 +1,7 @@
 import { USER_ACTION } from './action';
 import { userReducer } from './reducer';
 
-import { UserInfo, UserProfile } from '@/types';
+import { UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
 
 describe('Splash Reducer', () => {
   const initState = {
@@ -9,6 +9,7 @@ describe('Splash Reducer', () => {
     recentTransaction: {
       userProfiles: [],
     },
+    userCards: [],
   };
 
   it('should return the initial state', () => {
@@ -37,6 +38,19 @@ describe('Splash Reducer', () => {
         userProfiles: payload,
       },
     };
+    expect(userReducer(initState, action)).toEqual(expectedState);
+  });
+  it('should handle USER_ACTION.FETCH_USER_CARD_SUCCESS', () => {
+    const payload: UserCard[] = [
+      {
+        name: 'My Salary',
+        status: UserCardStatus.IN_PROGRESS,
+        issuer: 'TestLab',
+        color: '#00a1e2',
+      },
+    ];
+    const action = { type: USER_ACTION.FETCH_USER_CARD_SUCCESS, payload };
+    const expectedState = {...initState, userCards: payload};
     expect(userReducer(initState, action)).toEqual(expectedState);
   });
 });

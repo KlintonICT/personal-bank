@@ -1,3 +1,4 @@
+import { UserCards } from '@/components/UserCards';
 import { UserProfiles } from '@/components/UserProfiles';
 import { useAppSelector } from '@/store';
 
@@ -5,6 +6,7 @@ const BankMain = () => {
   const {
     userInfo,
     recentTransaction: { userProfiles },
+    userCards,
   } = useAppSelector((state) => state.user);
 
   return (
@@ -26,6 +28,10 @@ const BankMain = () => {
 
           <div className='rctly__wrap main-loading main-loading--order5'>
             <UserProfiles profiles={userProfiles} />
+          </div>
+
+          <div className='debit-swipe__wrap main-loading main-loading--order6'>
+            <UserCards cards={userCards} />
           </div>
         </div>
       </main>

@@ -1,12 +1,14 @@
 import {
   handleFetchRecentTransaction,
   handleFetchRecentTransactionSuccess,
+  handleFetchUserCard,
+  handleFetchUserCardSuccess,
   handleFetchUserInfo,
   handleFetchUserInfoSuccess,
   USER_ACTION,
 } from './action';
 
-import { UserInfo, UserProfile } from '@/types';
+import { UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
 
 describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO', () => {
@@ -35,5 +37,23 @@ describe('User Actions', () => {
     ];
     const expectedAction = { type: USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS, payload };
     expect(handleFetchRecentTransactionSuccess(payload)).toEqual(expectedAction);
+  });
+
+  it('should create an action to handle USER_ACTION.FETCH_USER_CARD', () => {
+    const expectedAction = { type: USER_ACTION.FETCH_USER_CARD };
+    expect(handleFetchUserCard()).toEqual(expectedAction);
+  });
+
+  it('should create an action to handle USER_ACTION.FETCH_USER_CARD_SUCCESS', () => {
+    const payload: UserCard[] = [
+      {
+        name: 'My Salary',
+        status: UserCardStatus.IN_PROGRESS,
+        issuer: 'TestLab',
+        color: '#00a1e2',
+      },
+    ];
+    const expectedAction = { type: USER_ACTION.FETCH_USER_CARD_SUCCESS, payload };
+    expect(handleFetchUserCardSuccess(payload)).toEqual(expectedAction);
   });
 });

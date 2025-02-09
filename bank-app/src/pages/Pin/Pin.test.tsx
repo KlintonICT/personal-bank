@@ -14,7 +14,7 @@ jest.mock('react-router', () => ({
   useNavigate: () => mockNavigate,
 }));
 
-describe('Pin Component', () => {
+describe('Pin Page', () => {
   let store: any;
 
   beforeEach(() => {

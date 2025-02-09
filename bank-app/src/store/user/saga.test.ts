@@ -1,13 +1,20 @@
 import { testSaga } from 'redux-saga-test-plan';
 
-import { handleFetchRecentTransactionSuccess, handleFetchUserInfoSuccess, USER_ACTION } from './action';
-import { fetchRecentTransactionSaga, fetchUserInfoSaga, userSaga } from './saga';
+import {
+  handleFetchRecentTransactionSuccess,
+  handleFetchUserCardSuccess,
+  handleFetchUserInfoSuccess,
+  USER_ACTION,
+} from './action';
+import { fetchRecentTransactionSaga, fetchUserCardSaga, fetchUserInfoSaga, userSaga } from './saga';
 
-import { fetchRecentTransaction, fetchUserInfo } from '@/apis';
+import { fetchRecentTransaction, fetchUserCard, fetchUserInfo } from '@/apis';
+import { UserCardStatus } from '@/types';
 
 jest.mock('@/apis', () => ({
   fetchUserInfo: jest.fn(),
   fetchRecentTransaction: jest.fn(),
+  fetchUserCard: jest.fn(),
 }));
 
 describe('fetchUserInfoSaga', () => {
@@ -61,12 +68,44 @@ describe('fetchUserInfoSaga', () => {
     consoleErrorSpy.mockRestore();
   });
 
+  it('should call fetchUserCard API and dispatch success action', () => {
+    const resData = {
+      data: [
+        {
+          name: 'My Salary',
+          status: UserCardStatus.IN_PROGRESS,
+          issuer: 'TestLab',
+          color: '#00a1e2',
+        },
+      ],
+    };
+
+    testSaga(fetchUserCardSaga)
+      .next()
+      .call(fetchUserCard)
+      .next(resData)
+      .put(handleFetchUserCardSuccess(resData.data))
+      .next()
+      .isDone();
+  });
+
+  it('should call fetchUserCard API and throw error', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
+
+    testSaga(fetchUserCardSaga).next().call(fetchUserCard).throw(new Error('fail')).next();
+    expect(consoleErrorSpy).toHaveBeenCalledWith('fetch user card error', expect.any(Error));
+
+    consoleErrorSpy.mockRestore();
+  });
+
   it('should listen for all expected actions', async () => {
     testSaga(userSaga)
       .next()
       .takeLatest(USER_ACTION.FETCH_USER_INFO, fetchUserInfoSaga)
       .next()
       .takeLatest(USER_ACTION.FETCH_RECENT_TRANSACTION, fetchRecentTransactionSaga)
+      .next()
+      .takeLatest(USER_ACTION.FETCH_USER_CARD, fetchUserCardSaga)
       .finish();
   });
 });
