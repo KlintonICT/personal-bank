@@ -5,7 +5,7 @@ import * as stories from './UserProfile.stories';
 
 const { UserProfileList } = composeStories(stories);
 
-it('renders UserProfiles from Storybook story', () => {
+it('renders UserProfiles component', () => {
   render(<UserProfileList />);
 
   expect(screen.getByText('Emily')).toBeInTheDocument();
