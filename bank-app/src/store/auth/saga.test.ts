@@ -4,6 +4,7 @@ import { testSaga } from 'redux-saga-test-plan';
 import { AUTH_ACTION, handleCheckAuthDone, handleLoginSuccess } from './action';
 import { checkAuthSaga, authSaga, login } from './saga';
 
+import { handleFetchBanner } from '@/store/banner/action';
 import { handleHideSplash } from '@/store/splash/action';
 import { handleFetchRecentTransaction, handleFetchUserCard, handleFetchUserInfo } from '@/store/user/action';
 
@@ -15,7 +16,12 @@ describe('Auth Saga', () => {
       .next()
       .delay(1000)
       .next()
-      .all([put(handleFetchUserInfo()), put(handleFetchRecentTransaction()), put(handleFetchUserCard())])
+      .all([
+        put(handleFetchUserInfo()),
+        put(handleFetchRecentTransaction()),
+        put(handleFetchUserCard()),
+        put(handleFetchBanner()),
+      ])
       .next()
       .put(handleCheckAuthDone({ isAuth: true }))
       .next()
@@ -45,7 +51,12 @@ describe('Auth Saga', () => {
   it('should handle login', async () => {
     testSaga(login)
       .next()
-      .all([put(handleFetchUserInfo()), put(handleFetchRecentTransaction()), put(handleFetchUserCard())])
+      .all([
+        put(handleFetchUserInfo()),
+        put(handleFetchRecentTransaction()),
+        put(handleFetchUserCard()),
+        put(handleFetchBanner()),
+      ])
       .next()
       .put(handleLoginSuccess())
       .finish();

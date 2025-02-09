@@ -1,3 +1,4 @@
+import { Banner } from '@/components/Banner';
 import { UserCards } from '@/components/UserCards';
 import { UserProfiles } from '@/components/UserProfiles';
 import { useAppSelector } from '@/store';
@@ -8,6 +9,7 @@ const BankMain = () => {
     recentTransaction: { userProfiles },
     userCards,
   } = useAppSelector((state) => state.user);
+  const { banners } = useAppSelector((state) => state.banner);
 
   return (
     <>
@@ -33,6 +35,8 @@ const BankMain = () => {
           <div className='debit-swipe__wrap main-loading main-loading--order6'>
             <UserCards cards={userCards} />
           </div>
+
+          {banners.length > 0 && <Banner data={banners[0]} />}
         </div>
       </main>
     </>

@@ -31,6 +31,9 @@ describe('BankMain Page', () => {
         },
         userCards: [],
       },
+      banner: {
+        banners: [],
+      },
     });
 
     renderComponent();
