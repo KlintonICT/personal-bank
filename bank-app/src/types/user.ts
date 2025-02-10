@@ -28,7 +28,7 @@ export type TUserAccount = {
   accountNumber: string;
   issuer: string;
   progress?: number;
-  color: string;
+  color?: string;
   flags?: string[];
   isMainAccount: boolean;
 };

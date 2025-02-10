@@ -12,7 +12,6 @@ const data: TUserAccount = {
   currency: 'THB',
   accountNumber: '568-2-81740-9',
   issuer: 'TestLab',
-  color: '#24c875',
   isMainAccount: true,
 };
 
@@ -20,7 +19,7 @@ const meta = {
   title: 'components/account/MainAccount',
   component: MainAccountComponent,
   args: {
-    data,
+    ...data,
     wrapperClassName: '',
   },
   tags: ['autodocs'],

@@ -30,7 +30,7 @@ const BankMain = () => {
             <h1 className='main-top__tit main-loading main-loading--order1'>{userInfo?.greetingMessage}</h1>
           </div>
 
-          {mainAccount && <MainAccount data={mainAccount} wrapperClassName='main-loading main-loading--order3' />}
+          {mainAccount && <MainAccount {...mainAccount} wrapperClassName='main-loading main-loading--order3' />}
 
           <div className='rctly__wrap main-loading main-loading--order5'>
             <UserProfiles profiles={userProfiles} />
