@@ -1,4 +1,4 @@
-import { MainAccount } from '@/components/account';
+import { MainAccount, UserAccount } from '@/components/account';
 import { Banner } from '@/components/Banner';
 import { UserCards } from '@/components/UserCards';
 import { UserProfiles } from '@/components/UserProfiles';
@@ -9,7 +9,7 @@ const BankMain = () => {
     userInfo,
     recentTransaction: { userProfiles },
     userCards,
-    userAccount: { mainAccount },
+    userAccount: { mainAccount, accounts },
   } = useAppSelector((state) => state.user);
   const { banners } = useAppSelector((state) => state.banner);
 
@@ -39,6 +39,10 @@ const BankMain = () => {
           <div className='debit-swipe__wrap main-loading main-loading--order6'>
             <UserCards cards={userCards} />
           </div>
+
+          {accounts.map((item) => (
+            <UserAccount data={item} key={item.title} />
+          ))}
 
           {banners.length > 0 && <Banner data={banners[0]} />}
 

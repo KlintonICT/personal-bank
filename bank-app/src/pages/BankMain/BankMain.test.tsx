@@ -32,7 +32,8 @@ describe('BankMain Page', () => {
         userCards: [],
         userAccount: {
           mainAccount: null,
-        }
+          accounts: [],
+        },
       },
       banner: {
         banners: [],
