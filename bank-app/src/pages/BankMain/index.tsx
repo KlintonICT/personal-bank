@@ -44,7 +44,7 @@ const BankMain = () => {
             <UserAccount data={item} key={item.title} />
           ))}
 
-          {banners.length > 0 && <Banner data={banners[0]} />}
+          {banners.length > 0 && <Banner {...banners[0]} />}
 
           <div className='main-tb'>
             <a href='#' className='link-to'>
