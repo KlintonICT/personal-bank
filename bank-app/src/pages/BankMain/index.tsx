@@ -41,7 +41,7 @@ const BankMain = () => {
           </div>
 
           {accounts.map((item) => (
-            <UserAccount data={item} key={item.title} />
+            <UserAccount {...item} key={item.title} />
           ))}
 
           {banners.length > 0 && <Banner {...banners[0]} />}
