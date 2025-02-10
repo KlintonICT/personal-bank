@@ -10,7 +10,8 @@ import {
   USER_ACTION,
 } from './action';
 
-import { TUserAccount, UserAccountType, TUserCard, UserCardStatus, TUserInfo, TUserProfile } from '@/types';
+import { UserAccountType, UserCardStatus } from '@/constants';
+import { TUserAccount,  TUserCard, TUserInfo, TUserProfile } from '@/types';
 
 describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO', () => {

@@ -1,3 +1,5 @@
+import { UserAccountType, UserCardStatus } from '@/constants';
+
 export type TUserInfo = {
   name: string;
   greetingMessage: string;
@@ -9,14 +11,6 @@ export type TUserProfile = {
   isBank: boolean;
 };
 
-export enum UserCardStatus {
-  IN_PROGRESS = 'in-progress',
-  ACTIVE = 'Active',
-}
-export const UserCardStatusText = {
-  [UserCardStatus.IN_PROGRESS]: 'In Progress',
-  [UserCardStatus.ACTIVE]: 'Active',
-};
 export type TUserCard = {
   name: string;
   status: UserCardStatus;
@@ -26,11 +20,6 @@ export type TUserCard = {
   number?: string;
 };
 
-export enum UserAccountType {
-  SAVING_ACCOUNT = 'saving-account',
-  CREDIT_LOAN = 'credit-loan',
-  GOAL_SAVING_ACCOUNT = 'goal-saving-account',
-}
 export type TUserAccount = {
   type: UserAccountType;
   title: string;

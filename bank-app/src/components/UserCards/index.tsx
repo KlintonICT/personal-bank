@@ -1,6 +1,7 @@
 import { CSSProperties, FC } from 'react';
 
-import { TUserCard, UserCardStatus, UserCardStatusText } from '@/types';
+import { UserCardStatus, UserCardStatusText } from '@/constants';
+import { TUserCard } from '@/types';
 
 interface UserCardsProps {
   cards: TUserCard[];

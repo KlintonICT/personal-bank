@@ -2,7 +2,8 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { MainAccount as MainAccountComponent } from './';
 
-import { TUserAccount, UserAccountType } from '@/types';
+import { UserAccountType } from '@/constants';
+import { TUserAccount } from '@/types';
 
 const data: TUserAccount = {
   type: UserAccountType.SAVING_ACCOUNT,

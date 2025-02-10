@@ -1,7 +1,8 @@
 import { USER_ACTION } from './action';
 import { userReducer } from './reducer';
 
-import { TUserAccount, UserAccountType, TUserCard, UserCardStatus, TUserInfo, TUserProfile } from '@/types';
+import { UserAccountType, UserCardStatus } from '@/constants';
+import { TUserAccount, TUserCard, TUserInfo, TUserProfile } from '@/types';
 
 describe('User Reducer', () => {
   const initState = {

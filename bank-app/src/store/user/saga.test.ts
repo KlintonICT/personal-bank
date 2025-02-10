@@ -16,7 +16,7 @@ import {
 } from './saga';
 
 import { fetchRecentTransaction, fetchUserAccount, fetchUserCard, fetchUserInfo } from '@/apis';
-import { UserAccountType, UserCardStatus } from '@/types';
+import { UserAccountType, UserCardStatus } from '@/constants';
 
 jest.mock('@/apis', () => ({
   fetchUserInfo: jest.fn(),
