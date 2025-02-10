@@ -2,9 +2,9 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { MainAccount as MainAccountComponent } from './';
 
-import { UserAccount, UserAccountType } from '@/types';
+import { TUserAccount, UserAccountType } from '@/types';
 
-const data: UserAccount = {
+const data: TUserAccount = {
   type: UserAccountType.SAVING_ACCOUNT,
   title: 'Saving Account',
   amount: 62000.0,

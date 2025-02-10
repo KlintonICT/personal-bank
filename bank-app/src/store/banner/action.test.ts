@@ -1,6 +1,6 @@
 import { BANNER_ACTION, handleFetchBanner, handleFetchBannerSuccess } from './action';
 
-import { Banner } from '@/types';
+import { TBanner } from '@/types';
 
 describe('Banner Actions', () => {
   it('should create an action to handle BANNER_ACTION.FETCH_USER_INFO', () => {
@@ -9,7 +9,7 @@ describe('Banner Actions', () => {
   });
 
   it('should create an action to handle BANNER_ACTION.FETCH_BANNER_SUCCESS', () => {
-    const payload: Banner[] = [
+    const payload: TBanner[] = [
       {
         title: 'Want some money?',
         description: "You can start apply 'Clare'",

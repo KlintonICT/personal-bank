@@ -9,11 +9,11 @@ import {
 } from './action';
 
 import { fetchUserInfo, APIResponse, fetchRecentTransaction, fetchUserCard, fetchUserAccount } from '@/apis';
-import { UserAccount, UserCard, UserInfo, UserProfile } from '@/types';
+import { TUserAccount, TUserCard, TUserInfo, TUserProfile } from '@/types';
 
 export function* fetchUserInfoSaga() {
   try {
-    const response: APIResponse<UserInfo> = yield call(fetchUserInfo);
+    const response: APIResponse<TUserInfo> = yield call(fetchUserInfo);
     yield put(handleFetchUserInfoSuccess(response.data));
   } catch (error) {
     console.error('fetch user info error', error);
@@ -22,7 +22,7 @@ export function* fetchUserInfoSaga() {
 
 export function* fetchRecentTransactionSaga() {
   try {
-    const response: APIResponse<UserProfile[]> = yield call(fetchRecentTransaction);
+    const response: APIResponse<TUserProfile[]> = yield call(fetchRecentTransaction);
     yield put(handleFetchRecentTransactionSuccess(response.data));
   } catch (error) {
     console.error('fetch recent transaction error', error);
@@ -31,7 +31,7 @@ export function* fetchRecentTransactionSaga() {
 
 export function* fetchUserCardSaga() {
   try {
-    const response: APIResponse<UserCard[]> = yield call(fetchUserCard);
+    const response: APIResponse<TUserCard[]> = yield call(fetchUserCard);
     yield put(handleFetchUserCardSuccess(response.data));
   } catch (error) {
     console.error('fetch user card error', error);
@@ -40,7 +40,7 @@ export function* fetchUserCardSaga() {
 
 export function* fetchUserAccountSaga() {
   try {
-    const response: APIResponse<UserAccount[]> = yield call(fetchUserAccount);
+    const response: APIResponse<TUserAccount[]> = yield call(fetchUserAccount);
     yield put(handleFetchUserAccountSuccess(response.data));
   } catch (error) {
     console.error('fetch user account error', error);

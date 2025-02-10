@@ -1,7 +1,7 @@
 import { USER_ACTION } from './action';
 import { userReducer } from './reducer';
 
-import { UserAccount, UserAccountType, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
+import { TUserAccount, UserAccountType, TUserCard, UserCardStatus, TUserInfo, TUserProfile } from '@/types';
 
 describe('User Reducer', () => {
   const initState = {
@@ -20,14 +20,14 @@ describe('User Reducer', () => {
   });
 
   it('should handle USER_ACTION.FETCH_USER_INFO_SUCCESS', () => {
-    const payload: UserInfo = { name: 'name', greetingMessage: 'greeting message' };
+    const payload: TUserInfo = { name: 'name', greetingMessage: 'greeting message' };
     const action = { type: USER_ACTION.FETCH_USER_INFO_SUCCESS, payload };
     const expectedState = { ...initState, userInfo: payload };
     expect(userReducer(initState, action)).toEqual(expectedState);
   });
 
   it('should handle USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS', () => {
-    const payload: UserProfile[] = [
+    const payload: TUserProfile[] = [
       {
         name: 'Emily',
         image: 'https://dummyimage.com/54x54/999/fff',
@@ -45,7 +45,7 @@ describe('User Reducer', () => {
   });
 
   it('should handle USER_ACTION.FETCH_USER_CARD_SUCCESS', () => {
-    const payload: UserCard[] = [
+    const payload: TUserCard[] = [
       {
         name: 'My Salary',
         status: UserCardStatus.IN_PROGRESS,
@@ -59,7 +59,7 @@ describe('User Reducer', () => {
   });
 
   it('should handle USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS', () => {
-    const payload: UserAccount[] = [
+    const payload: TUserAccount[] = [
       {
         type: UserAccountType.SAVING_ACCOUNT,
         title: 'Saving Account',

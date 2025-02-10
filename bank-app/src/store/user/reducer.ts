@@ -1,16 +1,16 @@
 import { USER_ACTION, USER_ACTION_TYPE } from './action';
 
-import { UserAccount, UserCard, UserInfo, UserProfile } from '@/types';
+import { TUserAccount, TUserCard, TUserInfo, TUserProfile } from '@/types';
 
 type InitUserState = {
-  userInfo: UserInfo | null;
+  userInfo: TUserInfo | null;
   recentTransaction: {
-    userProfiles: UserProfile[];
+    userProfiles: TUserProfile[];
   };
-  userCards: UserCard[];
+  userCards: TUserCard[];
   userAccount: {
-    mainAccount?: UserAccount;
-    accounts: UserAccount[];
+    mainAccount?: TUserAccount;
+    accounts: TUserAccount[];
   };
 };
 
@@ -28,14 +28,14 @@ const initialState: InitUserState = {
 export const userReducer = (state = initialState, action: USER_ACTION_TYPE) => {
   switch (action.type) {
     case USER_ACTION.FETCH_USER_INFO_SUCCESS: {
-      const payload: UserInfo = action.payload;
+      const payload: TUserInfo = action.payload;
       return {
         ...state,
         userInfo: payload,
       };
     }
     case USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS: {
-      const payload: UserProfile[] = action.payload;
+      const payload: TUserProfile[] = action.payload;
       return {
         ...state,
         recentTransaction: {
@@ -44,14 +44,14 @@ export const userReducer = (state = initialState, action: USER_ACTION_TYPE) => {
       };
     }
     case USER_ACTION.FETCH_USER_CARD_SUCCESS: {
-      const payload: UserCard[] = action.payload;
+      const payload: TUserCard[] = action.payload;
       return {
         ...state,
         userCards: payload,
       };
     }
     case USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS: {
-      const payload: UserAccount[] = action.payload;
+      const payload: TUserAccount[] = action.payload;
       const mainAccount = payload.find((item) => item.isMainAccount);
 
       return {

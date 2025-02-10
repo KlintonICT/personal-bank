@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import { UserProfile } from '@/types';
+import { TUserProfile } from '@/types';
 
 interface UserProfilesProps {
-  profiles: UserProfile[];
+  profiles: TUserProfile[];
 }
 
 export const UserProfiles: FC<UserProfilesProps> = ({ profiles }) => (

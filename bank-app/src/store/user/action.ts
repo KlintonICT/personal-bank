@@ -1,4 +1,4 @@
-import { UserAccount, UserCard, UserInfo, UserProfile } from '@/types';
+import { TUserAccount, TUserCard, TUserInfo, TUserProfile } from '@/types';
 
 export const USER_ACTION = {
   FETCH_USER_INFO: 'FETCH_USER_INFO',
@@ -12,25 +12,25 @@ export const USER_ACTION = {
 };
 
 export const handleFetchUserInfo = () => ({ type: USER_ACTION.FETCH_USER_INFO });
-export const handleFetchUserInfoSuccess = (payload: UserInfo) => ({
+export const handleFetchUserInfoSuccess = (payload: TUserInfo) => ({
   type: USER_ACTION.FETCH_USER_INFO_SUCCESS,
   payload,
 });
 
 export const handleFetchRecentTransaction = () => ({ type: USER_ACTION.FETCH_RECENT_TRANSACTION });
-export const handleFetchRecentTransactionSuccess = (payload: UserProfile[]) => ({
+export const handleFetchRecentTransactionSuccess = (payload: TUserProfile[]) => ({
   type: USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS,
   payload,
 });
 
 export const handleFetchUserCard = () => ({ type: USER_ACTION.FETCH_USER_CARD });
-export const handleFetchUserCardSuccess = (payload: UserCard[]) => ({
+export const handleFetchUserCardSuccess = (payload: TUserCard[]) => ({
   type: USER_ACTION.FETCH_USER_CARD_SUCCESS,
   payload,
 });
 
 export const handleFetchUserAccount = () => ({ type: USER_ACTION.FETCH_USER_ACCOUNT });
-export const handleFetchUserAccountSuccess = (payload: UserAccount[]) => ({
+export const handleFetchUserAccountSuccess = (payload: TUserAccount[]) => ({
   type: USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS,
   payload,
 });

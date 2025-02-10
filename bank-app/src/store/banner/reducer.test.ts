@@ -1,7 +1,7 @@
 import { BANNER_ACTION } from './action';
 import { bannerReducer } from './reducer';
 
-import { Banner } from '@/types';
+import { TBanner } from '@/types';
 
 describe('Banner Reducer', () => {
   const initState = { banners: [] };
@@ -11,7 +11,7 @@ describe('Banner Reducer', () => {
   });
 
   it('should handle BANNER_ACTION.FETCH_BANNER_SUCCESS', () => {
-    const payload: Banner[] = [
+    const payload: TBanner[] = [
       {
         title: 'Want some money?',
         description: "You can start apply 'Clare'",

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Banner as TBanner } from '@/types';
+import { TBanner } from '@/types';
 
 interface BannerProps {
   data: TBanner;

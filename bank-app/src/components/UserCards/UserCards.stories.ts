@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { UserCards } from '.';
 
-import { UserCard } from '@/types';
+import { TUserCard } from '@/types';
 
 const cards = [
   {
@@ -39,7 +39,7 @@ const cards = [
     color: '#9100c9',
     number: '9440 7841 2222 2345',
   },
-] as UserCard[];
+] as TUserCard[];
 
 const meta = {
   title: 'Components/UserCards',

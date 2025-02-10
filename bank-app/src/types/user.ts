@@ -1,9 +1,9 @@
-export type UserInfo = {
+export type TUserInfo = {
   name: string;
   greetingMessage: string;
 };
 
-export type UserProfile = {
+export type TUserProfile = {
   name: string;
   image: string;
   isBank: boolean;
@@ -17,7 +17,7 @@ export const UserCardStatusText = {
   [UserCardStatus.IN_PROGRESS]: 'In Progress',
   [UserCardStatus.ACTIVE]: 'Active',
 };
-export type UserCard = {
+export type TUserCard = {
   name: string;
   status: UserCardStatus;
   issuer: string;
@@ -31,8 +31,8 @@ export enum UserAccountType {
   CREDIT_LOAN = 'credit-loan',
   GOAL_SAVING_ACCOUNT = 'goal-saving-account',
 }
-export type UserAccount = {
-  type: UserAccountType ;
+export type TUserAccount = {
+  type: UserAccountType;
   title: string;
   amount: number;
   currency: string;

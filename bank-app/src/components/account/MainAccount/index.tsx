@@ -2,11 +2,11 @@ import clsx from 'clsx';
 import { FC } from 'react';
 
 import { LinkIcon } from '@/components/common';
-import { UserAccount  } from '@/types';
+import { TUserAccount  } from '@/types';
 import { formatCurrency } from '@/utils';
 
 interface MainAccountProps {
-  data: UserAccount;
+  data: TUserAccount;
   wrapperClassName: string;
 }
 

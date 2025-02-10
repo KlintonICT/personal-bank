@@ -10,7 +10,7 @@ import {
   USER_ACTION,
 } from './action';
 
-import { UserAccount, UserAccountType, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
+import { TUserAccount, UserAccountType, TUserCard, UserCardStatus, TUserInfo, TUserProfile } from '@/types';
 
 describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO', () => {
@@ -19,7 +19,7 @@ describe('User Actions', () => {
   });
 
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO_SUCCESS', () => {
-    const payload: UserInfo = { name: 'name', greetingMessage: 'greeting message' };
+    const payload: TUserInfo = { name: 'name', greetingMessage: 'greeting message' };
     const expectedAction = { type: USER_ACTION.FETCH_USER_INFO_SUCCESS, payload };
     expect(handleFetchUserInfoSuccess(payload)).toEqual(expectedAction);
   });
@@ -30,7 +30,7 @@ describe('User Actions', () => {
   });
 
   it('should create an action to handle USER_ACTION.FETCH_RECENT_TRANSACTION_SUCCESS', () => {
-    const payload: UserProfile[] = [
+    const payload: TUserProfile[] = [
       {
         name: 'Emily',
         image: 'https://dummyimage.com/54x54/999/fff',
@@ -47,7 +47,7 @@ describe('User Actions', () => {
   });
 
   it('should create an action to handle USER_ACTION.FETCH_USER_CARD_SUCCESS', () => {
-    const payload: UserCard[] = [
+    const payload: TUserCard[] = [
       {
         name: 'My Salary',
         status: UserCardStatus.IN_PROGRESS,
@@ -65,7 +65,7 @@ describe('User Actions', () => {
   });
 
   it('should create an action to handle USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS', () => {
-    const payload: UserAccount[] = [
+    const payload: TUserAccount[] = [
       {
         type: UserAccountType.SAVING_ACCOUNT,
         title: 'Saving Account',
