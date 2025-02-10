@@ -26,8 +26,14 @@ export type UserCard = {
   number?: string;
 };
 
+export enum UserAccountType {
+  SAVING_ACCOUNT = 'saving-account',
+  CREDIT_LOAN = 'credit-loan',
+  GOAL_SAVING_ACCOUNT = 'goal-saving-account',
+}
 export type UserAccount = {
-  type: string;
+  type: UserAccountType ;
+  title: string;
   amount: number;
   currency: string;
   accountNumber: string;

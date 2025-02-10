@@ -4,7 +4,7 @@ import { AUTH_ACTION, handleCheckAuthDone, handleLoginSuccess } from './action';
 
 import { handleFetchBanner } from '@/store/banner/action';
 import { handleHideSplash } from '@/store/splash/action';
-import { handleFetchRecentTransaction, handleFetchUserCard, handleFetchUserInfo } from '@/store/user/action';
+import { handleFetchRecentTransaction, handleFetchUserAccount, handleFetchUserCard, handleFetchUserInfo } from '@/store/user/action';
 
 export function* checkAuthSaga() {
   const isAuth = localStorage.getItem('isAuth') === 'true';
@@ -12,6 +12,7 @@ export function* checkAuthSaga() {
   if (isAuth) {
     yield all([
       put(handleFetchUserInfo()),
+      put(handleFetchUserAccount()),
       put(handleFetchRecentTransaction()),
       put(handleFetchUserCard()),
       put(handleFetchBanner()),
@@ -25,6 +26,7 @@ export function* login() {
   localStorage.setItem('isAuth', 'true');
   yield all([
     put(handleFetchUserInfo()),
+    put(handleFetchUserAccount()),
     put(handleFetchRecentTransaction()),
     put(handleFetchUserCard()),
     put(handleFetchBanner()),

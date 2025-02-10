@@ -1,3 +1,4 @@
+import { MainAccount } from '@/components/account';
 import { Banner } from '@/components/Banner';
 import { UserCards } from '@/components/UserCards';
 import { UserProfiles } from '@/components/UserProfiles';
@@ -8,6 +9,7 @@ const BankMain = () => {
     userInfo,
     recentTransaction: { userProfiles },
     userCards,
+    userAccount: { mainAccount },
   } = useAppSelector((state) => state.user);
   const { banners } = useAppSelector((state) => state.banner);
 
@@ -27,6 +29,8 @@ const BankMain = () => {
           <div className='main-top'>
             <h1 className='main-top__tit main-loading main-loading--order1'>{userInfo?.greetingMessage}</h1>
           </div>
+
+          {mainAccount && <MainAccount data={mainAccount} wrapperClassName='main-loading main-loading--order3' />}
 
           <div className='rctly__wrap main-loading main-loading--order5'>
             <UserProfiles profiles={userProfiles} />

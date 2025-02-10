@@ -6,6 +6,7 @@
   "accounts": [
     {
       "type": "saving-account",
+      "title": "Saving Account",
       "amount": 62000.0,
       "currency": "THB",
       "accountNumber": "568-2-81740-9",
@@ -15,6 +16,7 @@
     },
     {
       "type": "credit-loan",
+      "title": "Credit Loan",
       "amount": 300.1,
       "currency": "THB",
       "accountNumber": "568-2-81740-9",
@@ -24,6 +26,7 @@
     },
     {
       "type": "goal-saving-account",
+      "title": "Travel New York",
       "amount": 30000.0,
       "currency": "THB",
       "accountNumber": "568-2-81740-9",
@@ -34,6 +37,7 @@
     },
     {
       "type": "credit-loan",
+      "title": "Need to repay",
       "amount": 30000.0,
       "currency": "THB",
       "accountNumber": "568-2-81740-9",

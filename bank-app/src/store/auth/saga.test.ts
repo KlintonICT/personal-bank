@@ -6,7 +6,7 @@ import { checkAuthSaga, authSaga, login } from './saga';
 
 import { handleFetchBanner } from '@/store/banner/action';
 import { handleHideSplash } from '@/store/splash/action';
-import { handleFetchRecentTransaction, handleFetchUserCard, handleFetchUserInfo } from '@/store/user/action';
+import { handleFetchRecentTransaction, handleFetchUserAccount, handleFetchUserCard, handleFetchUserInfo } from '@/store/user/action';
 
 describe('Auth Saga', () => {
   it('should handle checkAuthSaga', async () => {
@@ -18,6 +18,7 @@ describe('Auth Saga', () => {
       .next()
       .all([
         put(handleFetchUserInfo()),
+        put(handleFetchUserAccount()),
         put(handleFetchRecentTransaction()),
         put(handleFetchUserCard()),
         put(handleFetchBanner()),
@@ -53,6 +54,7 @@ describe('Auth Saga', () => {
       .next()
       .all([
         put(handleFetchUserInfo()),
+        put(handleFetchUserAccount()),
         put(handleFetchRecentTransaction()),
         put(handleFetchUserCard()),
         put(handleFetchBanner()),

@@ -16,7 +16,7 @@ import {
 } from './saga';
 
 import { fetchRecentTransaction, fetchUserAccount, fetchUserCard, fetchUserInfo } from '@/apis';
-import { UserCardStatus } from '@/types';
+import { UserAccountType, UserCardStatus } from '@/types';
 
 jest.mock('@/apis', () => ({
   fetchUserInfo: jest.fn(),
@@ -110,7 +110,8 @@ describe('User Saga', () => {
     const resData = {
       data: [
         {
-          type: 'saving-account',
+          type: UserAccountType.SAVING_ACCOUNT,
+          title: "Saving Account",
           amount: 62000.0,
           currency: 'THB',
           accountNumber: '568-2-81740-9',

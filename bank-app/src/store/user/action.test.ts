@@ -10,7 +10,7 @@ import {
   USER_ACTION,
 } from './action';
 
-import { UserAccount, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
+import { UserAccount, UserAccountType, UserCard, UserCardStatus, UserInfo, UserProfile } from '@/types';
 
 describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_INFO', () => {
@@ -67,7 +67,8 @@ describe('User Actions', () => {
   it('should create an action to handle USER_ACTION.FETCH_USER_ACCOUNT_SUCCESS', () => {
     const payload: UserAccount[] = [
       {
-        type: 'saving-account',
+        type: UserAccountType.SAVING_ACCOUNT,
+        title: 'Saving Account',
         amount: 62000.0,
         currency: 'THB',
         accountNumber: '568-2-81740-9',
