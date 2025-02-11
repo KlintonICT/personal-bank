@@ -1,7 +1,7 @@
 import { MainAccount, UserAccount } from '@/components/account';
 import { Banner } from '@/components/Banner';
 import { UserCards } from '@/components/UserCards';
-import { UserProfiles } from '@/components/UserProfiles';
+import { UserProfile } from '@/components/UserProfile';
 import { useAppSelector } from '@/store';
 
 const BankMain = () => {
@@ -33,7 +33,13 @@ const BankMain = () => {
           {mainAccount && <MainAccount {...mainAccount} wrapperClassName='main-loading main-loading--order3' />}
 
           <div className='rctly__wrap main-loading main-loading--order5'>
-            <UserProfiles profiles={userProfiles} />
+            <ul className='rctly__lst'>
+              {userProfiles.map((item) => (
+                <li className='rctly__item' key={item.name}>
+                  <UserProfile {...item} />
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className='debit-swipe__wrap main-loading main-loading--order6'>
