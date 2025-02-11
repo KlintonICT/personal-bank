@@ -42,7 +42,7 @@ const cards = [
 ] as TUserCard[];
 
 const meta = {
-  title: 'Components/UserCards',
+  title: 'Components/UserCards/List',
   component: UserCards,
   tags: ['autodocs'],
 } satisfies Meta<typeof UserCards>;
